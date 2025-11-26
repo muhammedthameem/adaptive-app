@@ -2269,6 +2269,13 @@
       }
     }
   }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+  }
   .focus\:border-brand-300 {
     &:focus {
       border-color: var(--color-brand-300);

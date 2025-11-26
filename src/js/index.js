@@ -1,6 +1,7 @@
 import "jsvectormap/dist/jsvectormap.min.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "dropzone/dist/dropzone.css";
+import "preline/preline";
 import "../css/style.css";
 
 import Alpine from "alpinejs";

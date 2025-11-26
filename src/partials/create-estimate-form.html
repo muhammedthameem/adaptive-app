@@ -1,0 +1,1122 @@
+<div class="mx-auto max-w-(--breakpoint-2xl)">
+  <div class="grid grid-cols-12 gap-4 md:gap-6">
+    <div class="col-span-12">
+      <div class="flex flex-col flex-1 w-full">
+        <div class="flex flex-col justify-center flex-1 w-full">
+          <!-- Container wrapper -->
+          <div
+            id="editableWrap"
+            class="inline-flex relative items-baseline gap-2"
+          >
+            <!-- Display Text -->
+            <h4
+              id="editableText"
+              class="mb-3 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-sm transition-opacity duration-150"
+            >
+              New Estimate
+            </h4>
+
+            <!-- Input Field (keeps same vertical spacing with mb-3) -->
+            <input
+              id="editInput"
+              type="text"
+              class="hidden mb-3 text-3xl font-bold text-left !text-left text-start indent-0 border-0 shadow-none focus:ring-0 focus:outline-none self-start"
+            />
+
+            <!-- Edit Button -->
+            <button
+              id="editBtn"
+              title="Edit"
+              class="cursor-pointer p-1"
+              aria-label="Edit title"
+            >
+              <!-- svg -->
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 4.58605L1 12.5861V16.5861L5 16.586L13 8.58604M9 4.58605L11.8686 1.7174L11.8704 1.7157C12.2652 1.32082 12.463 1.12303 12.691 1.04894C12.8919 0.983686 13.1082 0.983686 13.3091 1.04894C13.5369 1.12297 13.7345 1.32054 14.1288 1.71486L15.8686 3.45466C16.2646 3.85067 16.4627 4.04878 16.5369 4.2771C16.6022 4.47795 16.6021 4.69429 16.5369 4.89513C16.4628 5.1233 16.265 5.3211 15.8695 5.71655L15.8686 5.7174L13 8.58604M9 4.58605L13 8.58604"
+                  stroke="#8E8E93"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="-mx-2.5 flex flex-wrap gap-y-5">
+          <div class="w-full px-2.5 xl:w-2/3">
+            <label
+              class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >
+              Select Client
+            </label>
+            <div class="flex flex-1 gap-3">
+              <div class="relative flex-1" data-hs-combo-box="">
+                <div class="relative">
+                  <input
+                    class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    type="text"
+                    role="combobox"
+                    aria-expanded="false"
+                    value=""
+                    data-hs-combo-box-input=""
+                  />
+                  <div
+                    class="hidden hs-combo-box-active:flex absolute inset-y-0 end-8 items-center z-20"
+                  >
+                    <button
+                      type="button"
+                      class="inline-flex shrink-0 justify-center items-center size-6 rounded-full text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+                      aria-label="Close"
+                      data-hs-combo-box-close=""
+                    >
+                      <span class="sr-only">Close</span>
+                      <svg
+                        class="shrink-0 size-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="m15 9-6 6"></path>
+                        <path d="m9 9 6 6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    class="absolute top-1/2 end-3 -translate-y-1/2"
+                    aria-expanded="false"
+                    role="button"
+                    data-hs-combo-box-toggle=""
+                  >
+                    <svg
+                      class="shrink-0 size-3.5 text-gray-500 dark:text-neutral-500"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m7 15 5 5 5-5"></path>
+                      <path d="m7 9 5-5 5 5"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  class="absolute z-50 w-full max-h-72 p-1 bg-white border border-gray-200 rounded-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700"
+                  style="display: none"
+                  role="listbox"
+                  data-hs-combo-box-output=""
+                >
+                  <div
+                    class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800"
+                    role="option"
+                    tabindex="0"
+                    data-hs-combo-box-output-item=""
+                    data-hs-combo-box-item-stored-data='{
+      "id": 1,
+      "name": "Argentina"
+    }'
+                  >
+                    <div class="flex justify-between items-center w-full">
+                      <span
+                        data-hs-combo-box-search-text="Argentina"
+                        data-hs-combo-box-value=""
+                        >Argentina</span
+                      >
+                      <span class="hidden hs-combo-box-selected:block">
+                        <svg
+                          class="shrink-0 size-3.5 text-blue-600 dark:text-blue-500"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800"
+                    role="option"
+                    tabindex="1"
+                    data-hs-combo-box-output-item=""
+                    data-hs-combo-box-item-stored-data='{
+      "id": 2,
+      "name": "Brazil"
+    }'
+                  >
+                    <div class="flex justify-between items-center w-full">
+                      <span
+                        data-hs-combo-box-search-text="Brazil"
+                        data-hs-combo-box-value=""
+                        >Brazil</span
+                      >
+                      <span class="hidden hs-combo-box-selected:block">
+                        <svg
+                          class="shrink-0 size-3.5 text-blue-600 dark:text-blue-500"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800"
+                    role="option"
+                    tabindex="2"
+                    data-hs-combo-box-output-item=""
+                    data-hs-combo-box-item-stored-data='{
+      "id": 3,
+      "name": "China"
+    }'
+                  >
+                    <div class="flex justify-between items-center w-full">
+                      <span
+                        data-hs-combo-box-search-text="China"
+                        data-hs-combo-box-value=""
+                        >China</span
+                      >
+                      <span class="hidden hs-combo-box-selected:block">
+                        <svg
+                          class="shrink-0 size-3.5 text-blue-600 dark:text-blue-500"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800"
+                    role="option"
+                    tabindex="3"
+                    data-hs-combo-box-output-item=""
+                    data-hs-combo-box-item-stored-data='{
+      "id": 4,
+      "name": "USA"
+    }'
+                  >
+                    <div class="flex justify-between items-center w-full">
+                      <span
+                        data-hs-combo-box-search-text="USA"
+                        data-hs-combo-box-value=""
+                        >USA</span
+                      >
+                      <span class="hidden hs-combo-box-selected:block">
+                        <svg
+                          class="shrink-0 size-3.5 text-blue-600 dark:text-blue-500"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800"
+                    role="option"
+                    tabindex="3"
+                    data-hs-combo-box-output-item=""
+                    data-hs-combo-box-item-stored-data='{
+      "id": 5,
+      "name": "Italy"
+    }'
+                  >
+                    <div class="flex justify-between items-center w-full">
+                      <span
+                        data-hs-combo-box-search-text="Italy"
+                        data-hs-combo-box-value=""
+                        >Italy</span
+                      >
+                      <span class="hidden hs-combo-box-selected:block">
+                        <svg
+                          class="shrink-0 size-3.5 text-blue-600 dark:text-blue-500"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800"
+                    role="option"
+                    tabindex="3"
+                    data-hs-combo-box-output-item=""
+                    data-hs-combo-box-item-stored-data='{
+      "id": 6,
+      "name": "France"
+    }'
+                  >
+                    <div class="flex justify-between items-center w-full">
+                      <span
+                        data-hs-combo-box-search-text="France"
+                        data-hs-combo-box-value=""
+                        >France</span
+                      >
+                      <span class="hidden hs-combo-box-selected:block">
+                        <svg
+                          class="shrink-0 size-3.5 text-blue-600 dark:text-blue-500"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                command="show-modal"
+                commandfor="dialog"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.37451 9H8.74914M8.74914 9H13.1238M8.74914 9V13.5M8.74914 9V4.5"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                Add New Client
+              </button>
+
+              <el-dialog>
+                <dialog
+                  id="dialog"
+                  aria-labelledby="dialog-title"
+                  class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent"
+                >
+                  <el-dialog-backdrop
+                    class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                  ></el-dialog-backdrop>
+
+                  <div
+                    tabindex="0"
+                    class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0"
+                  >
+                    <el-dialog-panel
+                      class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                    >
+                      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                          <div
+                            class="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:size-10"
+                          >
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                              data-slot="icon"
+                              aria-hidden="true"
+                              class="size-6 text-red-600"
+                            >
+                              <path
+                                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
+                          >
+                            <h3
+                              id="dialog-title"
+                              class="text-base font-semibold text-gray-900"
+                            >
+                              Deactivate account
+                            </h3>
+                            <div class="mt-2">
+                              <p class="text-sm text-gray-500">
+                                Are you sure you want to deactivate your
+                                account? All of your data will be permanently
+                                removed. This action cannot be undone.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+                      >
+                        <button
+                          type="button"
+                          command="close"
+                          commandfor="dialog"
+                          class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto"
+                        >
+                          Deactivate
+                        </button>
+                        <button
+                          type="button"
+                          command="close"
+                          commandfor="dialog"
+                          class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </el-dialog-panel>
+                  </div>
+                </dialog>
+              </el-dialog>
+            </div>
+          </div>
+
+          <div class="w-full px-2.5 xl:w-1/3">
+            <label
+              class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+            >
+              Date
+            </label>
+            <div class="relative">
+              <input
+                class="datepicker w-full rounded-lg border border-gray-300 bg-white py-2.5 px-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs focus:outline-hidden focus:ring-0 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+                placeholder="Select dates"
+                data-class="flatpickr-left"
+              />
+              <div
+                class="absolute inset-0 left-auto flex items-center pointer-events-none right-4"
+              >
+                <svg
+                  class="fill-gray-700 dark:fill-gray-400"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M6.66683 1.54199C7.08104 1.54199 7.41683 1.87778 7.41683 2.29199V3.00033H12.5835V2.29199C12.5835 1.87778 12.9193 1.54199 13.3335 1.54199C13.7477 1.54199 14.0835 1.87778 14.0835 2.29199V3.00033L15.4168 3.00033C16.5214 3.00033 17.4168 3.89576 17.4168 5.00033V7.50033V15.8337C17.4168 16.9382 16.5214 17.8337 15.4168 17.8337H4.5835C3.47893 17.8337 2.5835 16.9382 2.5835 15.8337V7.50033V5.00033C2.5835 3.89576 3.47893 3.00033 4.5835 3.00033L5.91683 3.00033V2.29199C5.91683 1.87778 6.25262 1.54199 6.66683 1.54199ZM6.66683 4.50033H4.5835C4.30735 4.50033 4.0835 4.72418 4.0835 5.00033V6.75033H15.9168V5.00033C15.9168 4.72418 15.693 4.50033 15.4168 4.50033H13.3335H6.66683ZM15.9168 8.25033H4.0835V15.8337C4.0835 16.1098 4.30735 16.3337 4.5835 16.3337H15.4168C15.693 16.3337 15.9168 16.1098 15.9168 15.8337V8.25033Z"
+                    fill=""
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mt-9">
+          <div class="absolute inset-0 flex items-center">
+            <div
+              class="w-full border-t border-gray-200 dark:border-gray-800"
+            ></div>
+          </div>
+        </div>
+
+        <div
+          class="bg-gray-100 dark:bg-slate-800 dark:text-white text-1xl font-bold text-right p-4"
+        >
+          Stage Total : <span>98,99,990</span>
+        </div>
+
+        <div
+          class="rounded-lg border dark:border-gray-700 border-gray-300 mt-5 p-8"
+        >
+          <div class="parent-box flex-1 flex flex-col gap-6 relative">
+            <div
+              class="absolute bg-white dark:bg-black flex items-center justify-center left-0 right-0 mx-auto w-full h-full z-20"
+            >
+              <button
+                onclick="this.closest('div').classList.add('hidden')"
+                class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+              >
+                Add Stage
+              </button>
+            </div>
+            <div class="p-r-box flex-1 flex gap-2">
+              <div class="flex flex-col self-center">
+                <span class="cursor-pointer" title="Up">
+                  <svg
+                    width="27"
+                    height="25"
+                    viewBox="0 0 27 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.5 17.7084V7.29169M13.5 7.29169L9 11.4584M13.5 7.29169L18 11.4584"
+                      stroke="#465FFF"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="cursor-pointer" title="Down">
+                  <svg
+                    width="27"
+                    height="26"
+                    viewBox="0 0 27 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.5 7.58331V18.4166M13.5 18.4166L18 14.0833M13.5 18.4166L9 14.0833"
+                      stroke="#AEAEB2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="rounded-lg border dark:bg-slate-800 dark:text-white dark:border-gray-700 border-gray-300 p-6 bg-[#F1F7FF] flex-1 flex flex-col"
+              >
+                <div class="flex gap-3">
+                  <label
+                    class="self-center text-sm text-gray-700 dark:text-white"
+                  >
+                    Stage
+                  </label>
+                  <span class="flex-1">
+                    <input
+                      type="text"
+                      id=""
+                      name=""
+                      placeholder="Enter stage"
+                      class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    />
+                  </span>
+                  <span class="flex gap-2">
+                    <button
+                      class="inline-flex items-center gap-2 px-4 py-3 text-white text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4.37451 9H8.74914M8.74914 9H13.1238M8.74914 9V13.5M8.74914 9V4.5"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-red-600 shadow-theme-xs hover:bg-red-500"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.75 6.44444V11.8889M6.25 6.44444V11.8889M2.75 3.33333V12.5111C2.75 13.3823 2.75 13.8176 2.94074 14.1504C3.10852 14.443 3.37604 14.6815 3.70532 14.8306C4.0793 15 4.56912 15 5.5473 15H10.4527C11.4309 15 11.92 15 12.294 14.8306C12.6233 14.6815 12.8917 14.443 13.0594 14.1504C13.25 13.8179 13.25 13.383 13.25 12.5135V3.33333M2.75 3.33333H4.5M2.75 3.33333H1M4.5 3.33333H11.5M4.5 3.33333C4.5 2.60854 4.5 2.24632 4.63321 1.96045C4.81082 1.57929 5.15128 1.27629 5.58008 1.11841C5.90168 1 6.3096 1 7.125 1H8.875C9.6904 1 10.0981 1 10.4197 1.11841C10.8485 1.27629 11.1891 1.57929 11.3667 1.96045C11.4999 2.24631 11.5 2.60854 11.5 3.33333M11.5 3.33333H13.25M13.25 3.33333H15"
+                          stroke="white"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    <!--Confirmation modal-->
+
+                    <!--Confirmation modal-->
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="child-box ml-10 flex flex-1 relative">
+              <div
+                class="popupDiv bg-white dark:bg-black flex items-center justify-center mx-auto w-full h-full"
+              >
+                <button
+                  onclick="closePopup()"
+                  class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                >
+                  Add Category
+                </button>
+              </div>
+              <div
+                class="card flex flex-1 hidden relative before:content-[''] before:absolute before:left-[-28px] before:top-[-40px] before:w-[1px] before:h-[calc(100%+24px)] before:border-l before:border-gray-300 dark:before:border-gray-700 after:content-[''] after:absolute after:left-[-28px] after:top-[50%] after:w-[20px] after:h-[1px] after:border-b after:border-gray-300 dark:after:border-gray-700"
+              >
+                <div class="flex flex-col self-center">
+                  <span class="cursor-pointer" title="Up">
+                    <svg
+                      width="27"
+                      height="25"
+                      viewBox="0 0 27 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.5 17.7084V7.29169M13.5 7.29169L9 11.4584M13.5 7.29169L18 11.4584"
+                        stroke="#465FFF"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span class="cursor-pointer" title="Down">
+                    <svg
+                      width="27"
+                      height="26"
+                      viewBox="0 0 27 26"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.5 7.58331V18.4166M13.5 18.4166L18 14.0833M13.5 18.4166L9 14.0833"
+                        stroke="#AEAEB2"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="rounded-lg border dark:bg-slate-800 dark:text-white dark:border-gray-700 border-gray-300 p-6 bg-[#F3FFF6] flex-1 flex flex-col"
+                >
+                  <div class="flex gap-3">
+                    <label
+                      class="self-center text-sm text-gray-700 dark:text-white"
+                    >
+                      Category
+                    </label>
+                    <span class="flex-1">
+                      <input
+                        type="text"
+                        id=""
+                        name=""
+                        placeholder="Enter Category"
+                        class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                      />
+                    </span>
+                    <span class="flex gap-2">
+                      <button
+                        class="inline-flex items-center gap-2 px-4 py-3 text-white text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                      >
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 18 18"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.37451 9H8.74914M8.74914 9H13.1238M8.74914 9V13.5M8.74914 9V4.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+
+                      <button
+                        class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-red-600 shadow-theme-xs hover:bg-red-500"
+                        onclick="toggleCards(this)"
+                      >
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M9.75 6.44444V11.8889M6.25 6.44444V11.8889M2.75 3.33333V12.5111C2.75 13.3823 2.75 13.8176 2.94074 14.1504C3.10852 14.443 3.37604 14.6815 3.70532 14.8306C4.0793 15 4.56912 15 5.5473 15H10.4527C11.4309 15 11.92 15 12.294 14.8306C12.6233 14.6815 12.8917 14.443 13.0594 14.1504C13.25 13.8179 13.25 13.383 13.25 12.5135V3.33333M2.75 3.33333H4.5M2.75 3.33333H1M4.5 3.33333H11.5M4.5 3.33333C4.5 2.60854 4.5 2.24632 4.63321 1.96045C4.81082 1.57929 5.15128 1.27629 5.58008 1.11841C5.90168 1 6.3096 1 7.125 1H8.875C9.6904 1 10.0981 1 10.4197 1.11841C10.8485 1.27629 11.1891 1.57929 11.3667 1.96045C11.4999 2.24631 11.5 2.60854 11.5 3.33333M11.5 3.33333H13.25M13.25 3.33333H15"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </span>
+                  </div>
+
+                  <div class="flex mt-7 flex-col">
+                    <div class="sourceDiv flex justify-center items-center">
+                      <button
+                        onclick="toggleSection(this)"
+                        class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                      >
+                        Add Listing
+                      </button>
+                    </div>
+
+                    <div class="hidden my-4 targetDiv">
+                      <div class="flex flex-col">
+                        <div class="-m-1.5 overflow-x-auto">
+                          <div
+                            class="p-1.5 min-w-full inline-block align-middle"
+                          >
+                            <div
+                              class="border border-gray-200 rounded-lg divide-y divide-gray-200 dark:border-neutral-700 dark:divide-neutral-700"
+                            >
+                              <div class="py-3 px-4">
+                                <div class="relative max-w-xs">
+                                  <label class="sr-only">Search</label>
+                                  <input
+                                    type="text"
+                                    name="hs-table-with-pagination-search"
+                                    id="hs-table-with-pagination-search"
+                                    class="py-1.5 sm:py-2 px-3 ps-9 block w-full dark:bg-dark-900 h-11 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                    placeholder="Search for items"
+                                  />
+                                  <div
+                                    class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3"
+                                  >
+                                    <svg
+                                      class="size-4 text-gray-400 dark:text-neutral-500"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="24"
+                                      height="24"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    >
+                                      <circle cx="11" cy="11" r="8"></circle>
+                                      <path d="m21 21-4.3-4.3"></path>
+                                    </svg>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                class="overflow-x-auto overflow-y-hidden max-w-[calc(100vw-239px)]"
+                              >
+                                <table
+                                  class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700"
+                                >
+                                  <thead class="bg-gray-50 dark:bg-gray-900">
+                                    <tr>
+                                      <th
+                                        class="p-2 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                        scope="col"
+                                      >
+                                        Listing
+                                      </th>
+                                      <th
+                                        scope="col"
+                                        class="p-2 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                      >
+                                        Description
+                                      </th>
+                                      <th
+                                        scope="col"
+                                        class="p-2 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                      >
+                                        Unit
+                                      </th>
+                                      <th
+                                        scope="col"
+                                        class="p-2 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                      >
+                                        Qty
+                                      </th>
+                                      <th
+                                        scope="col"
+                                        class="p-2 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                      >
+                                        Rate
+                                      </th>
+                                      <th
+                                        scope="col"
+                                        class="p-2 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                      >
+                                        Action
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody
+                                    class="divide-y divide-gray-200 dark:divide-neutral-700"
+                                  >
+                                    <tr>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <input
+                                          type="text"
+                                          id=""
+                                          name=""
+                                          placeholder="Listing"
+                                          class="w-32 md:w-full px-2 dark:bg-dark-900 h-11 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                        />
+                                      </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <textarea
+                                          placeholder="Description"
+                                          type="text"
+                                          rows=""
+                                          class="w-32 md:w-full px-2 dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:shadow-focus-ring dark:focus:border-brand-800 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 placeholder:text-gray-400 focus:ring-0 focus:outline-hidden disabled:border-gray-100 disabled:bg-gray-50 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:placeholder:text-white/15"
+                                        ></textarea>
+                                      </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <div
+                                          x-data="{ isOptionSelected: false }"
+                                          class="relative z-20 bg-transparent"
+                                        >
+                                          <select
+                                            class="w-32 md:w-full px-2 dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 appearance-none rounded-lg border border-gray-300 bg-transparent bg-none pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                                            :class="isOptionSelected && 'text-gray-800 dark:text-white/50'"
+                                            @change="isOptionSelected = true"
+                                          >
+                                            <option
+                                              value=""
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Select Option
+                                            </option>
+                                            <option
+                                              value=""
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Marketing
+                                            </option>
+                                            <option
+                                              value=""
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Template
+                                            </option>
+                                            <option
+                                              value=""
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Development
+                                            </option>
+                                          </select>
+                                          <span
+                                            class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                                          >
+                                            <svg
+                                              class="stroke-current"
+                                              width="20"
+                                              height="20"
+                                              viewBox="0 0 20 20"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
+                                                stroke=""
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </div>
+                                      </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <input
+                                          type="text"
+                                          id=""
+                                          name=""
+                                          placeholder="Quantity"
+                                          class="w-32 md:w-full px-2 dark:bg-dark-900 h-11 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                        />
+                                      </td>
+
+                                      <td
+                                        class="p-2 whitespace-nowrap text-start text-sm font-medium"
+                                      >
+                                        <input
+                                          type="text"
+                                          id=""
+                                          name=""
+                                          placeholder="Rate"
+                                          class="w-32 md:w-full px-2 dark:bg-dark-900 h-11 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                        />
+                                      </td>
+
+                                      <td
+                                        class="p-2 whitespace-nowrap text-start text-sm font-medium"
+                                      >
+                                        <button
+                                          type="button"
+                                          class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                                        >
+                                          <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 16 16"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path
+                                              d="M9.75 6.44444V11.8889M6.25 6.44444V11.8889M2.75 3.33333V12.5111C2.75 13.3823 2.75 13.8176 2.94074 14.1504C3.10852 14.443 3.37604 14.6815 3.70532 14.8306C4.0793 15 4.56912 15 5.5473 15H10.4527C11.4309 15 11.92 15 12.294 14.8306C12.6233 14.6815 12.8917 14.443 13.0594 14.1504C13.25 13.8179 13.25 13.383 13.25 12.5135V3.33333M2.75 3.33333H4.5M2.75 3.33333H1M4.5 3.33333H11.5M4.5 3.33333C4.5 2.60854 4.5 2.24632 4.63321 1.96045C4.81082 1.57929 5.15128 1.27629 5.58008 1.11841C5.90168 1 6.3096 1 7.125 1H8.875C9.6904 1 10.0981 1 10.4197 1.11841C10.8485 1.27629 11.1891 1.57929 11.3667 1.96045C11.4999 2.24631 11.5 2.60854 11.5 3.33333M11.5 3.33333H13.25M13.25 3.33333H15"
+                                              stroke="currentColor"
+                                              class="text-red-400 dark:text-red-400"
+                                              stroke-width="2"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                            />
+                                          </svg>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="py-1 px-4">
+                                <nav
+                                  class="flex items-center space-x-1"
+                                  aria-label="Pagination"
+                                >
+                                  <button
+                                    type="button"
+                                    class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                                    aria-label="Previous"
+                                  >
+                                    <span aria-hidden="true">«</span>
+                                    <span class="sr-only">Previous</span>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:bg-neutral-700 dark:hover:bg-neutral-700"
+                                    aria-current="page"
+                                  >
+                                    1
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:bg-neutral-700 dark:hover:bg-neutral-700"
+                                  >
+                                    2
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:bg-neutral-700 dark:hover:bg-neutral-700"
+                                  >
+                                    3
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                                    aria-label="Next"
+                                  >
+                                    <span class="sr-only">Next</span>
+                                    <span aria-hidden="true">»</span>
+                                  </button>
+                                </nav>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const wrap = document.getElementById("editableWrap");
+    const editableText = document.getElementById("editableText");
+    const editInput = document.getElementById("editInput");
+    const editBtn = document.getElementById("editBtn");
+
+    function openEditor() {
+      // populate input
+      editInput.value = editableText.textContent.trim();
+
+      // show input / hide text + button
+      editableText.classList.add("hidden");
+      editInput.classList.remove("hidden");
+      editBtn.classList.add("hidden");
+
+      // focus and place caret at end
+      editInput.focus();
+      editInput.setSelectionRange(
+        editInput.value.length,
+        editInput.value.length
+      );
+    }
+
+    function closeEditor(save = true) {
+      const newValue = editInput.value.trim();
+
+      if (save && newValue !== "") {
+        editableText.textContent = newValue;
+      } else {
+        // revert input value to original text if empty or not saving
+        editInput.value = editableText.textContent;
+      }
+
+      // hide input / show text + button
+      editInput.classList.add("hidden");
+      editableText.classList.remove("hidden");
+      editBtn.classList.remove("hidden");
+    }
+
+    // click edit button — open editor
+    editBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // prevent bubbling to document click
+      openEditor();
+    });
+
+    // Enter = save
+    editInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        closeEditor(true);
+      } else if (e.key === "Escape") {
+        // Esc = cancel (revert)
+        closeEditor(false);
+      }
+    });
+
+    // blur = save (when the input loses focus)
+    editInput.addEventListener("blur", () => {
+      // small timeout to allow click on buttons inside the wrap (if any)
+      setTimeout(() => {
+        if (!document.activeElement || document.activeElement !== editInput) {
+          closeEditor(true);
+        }
+      }, 0);
+    });
+
+    // click outside the wrapper => save
+    document.addEventListener("click", (e) => {
+      // if editor is open and click target is outside the wrapper, save
+      const editorOpen = !editInput.classList.contains("hidden");
+      if (editorOpen && !wrap.contains(e.target)) {
+        closeEditor(true);
+      }
+    });
+
+    // Optional: keyboard accessibility — Enter on editBtn
+    editBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openEditor();
+      }
+    });
+  })();
+</script>
+
+<script>
+  function toggleCards(btn) {
+    const currentCard = btn.closest(".card");
+
+    currentCard.classList.add("hidden");
+
+    document.querySelector(".popupDiv").classList.remove("hidden");
+  }
+
+  function closePopup() {
+    const popup = document.querySelector(".popupDiv");
+    popup.classList.add("hidden");
+
+    const hiddenCards = document.querySelectorAll(".card.hidden");
+
+    if (hiddenCards.length > 0) {
+      hiddenCards[0].classList.remove("hidden"); // Show first hidden card
+    }
+  }
+</script>
+
+<script>
+  function toggleSection(btn) {
+    btn.closest(".sourceDiv").classList.add("hidden"); // hide current section
+    document.querySelector(".targetDiv").classList.remove("hidden"); // show next
+  }
+</script>

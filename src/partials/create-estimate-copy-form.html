@@ -20,7 +20,7 @@
             <input
               id="editInput"
               type="text"
-              class="hidden mb-3 text-3xl dark:text-white font-bold text-left !text-left text-start indent-0 border-0 shadow-none focus:ring-0 focus:outline-none self-start"
+              class="hidden mb-3 text-3xl font-bold text-left !text-left text-start indent-0 border-0 shadow-none focus:ring-0 focus:outline-none self-start"
             />
 
             <!-- Edit Button -->
@@ -372,9 +372,7 @@
                     <el-dialog-panel
                       class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:max-w-xl data-closed:sm:translate-y-0 data-closed:sm:scale-95"
                     >
-                      <div
-                        class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-slate-800"
-                      >
+                      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <div class="sm:flex sm:items-start">
                           <div class="col-span-12">
                             <div class="flex flex-col flex-1 w-full">
@@ -549,7 +547,7 @@
                                         <div class="sm:col-span-1">
                                           <!-- Elements -->
                                           <label
-                                            class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                                            class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white/15"
                                           >
                                             Address
                                           </label>
@@ -565,7 +563,7 @@
                                           <!-- Elements -->
                                           <div class="flex gap-4">
                                             <label
-                                              class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                                              class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white/15"
                                             >
                                               Billing Address
                                             </label>
@@ -625,7 +623,7 @@
                                         <div class="sm:col-span-1">
                                           <!-- Elements -->
                                           <label
-                                            class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                                            class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white/15"
                                           >
                                             Note
                                           </label>
@@ -646,7 +644,7 @@
                         </div>
                       </div>
                       <div
-                        class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 gap-3 dark:bg-slate-800"
+                        class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 gap-3"
                       >
                         <button
                           class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
@@ -723,140 +721,126 @@
           class="rounded-lg border dark:border-gray-700 border-gray-300 mt-3 p-3"
         >
           <div class="parent-box flex-1 flex flex-col gap-3 relative">
-            <div id="stages-wrapper" class="flex flex-col gap-3"></div>
-
-            <!-- Stage Template -->
-            <template id="stage-template">
-              <div
-                class="stage flex-1 flex flex-col"
-                data-stage-index="__i__"
-                data-default="false"
-              >
-                <div class="p-r-box flex-1 flex gap-2">
-                  <div class="flex flex-1 flex-col gap-3">
-                    <div
-                      class="rounded-lg border flex dark:bg-slate-800 dark:text-white dark:border-gray-700 border-gray-300 p-3 bg-[#F1F7FF]"
+            <div
+              class="rounded-lg border dark:bg-slate-800 dark:text-white dark:border-gray-700 border-gray-300 p-3 bg-[#F1F7FF] flex-1 flex flex-col"
+            >
+              <div class="p-r-box flex-1 flex gap-2">
+                <div class="flex flex-col self-center">
+                  <span class="cursor-pointer" title="Up">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 27 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <div class="flex flex-col self-center">
-                        <span class="cursor-pointer" title="Up">
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 27 25"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M13.5 17.7084V7.29169M13.5 7.29169L9 11.4584M13.5 7.29169L18 11.4584"
-                              stroke="#465FFF"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                          </svg>
-                        </span>
-                        <span class="cursor-pointer" title="Down">
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 27 26"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M13.5 7.58331V18.4166M13.5 18.4166L18 14.0833M13.5 18.4166L9 14.0833"
-                              stroke="#AEAEB2"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                          </svg>
-                        </span>
-                      </div>
+                      <path
+                        d="M13.5 17.7084V7.29169M13.5 7.29169L9 11.4584M13.5 7.29169L18 11.4584"
+                        stroke="#465FFF"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span class="cursor-pointer" title="Down">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 27 26"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.5 7.58331V18.4166M13.5 18.4166L18 14.0833M13.5 18.4166L9 14.0833"
+                        stroke="#AEAEB2"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </div>
 
-                      <div class="flex flex-1 gap-3">
-                        <label
-                          class="self-center text-sm text-gray-700 dark:text-white text-[13px]"
-                        >
-                          Stage
-                        </label>
-                        <span class="flex-1">
-                          <input
-                            type="text"
-                            id=""
-                            name="stages[__i__][name]"
-                            placeholder="Enter stage"
-                            class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-                            fdprocessedid="bxa8q"
-                          />
-                        </span>
-                        <span class="flex gap-2">
-                          <button
-                            class="add-stage add-btn max-h-[32px] items-center gap-2 px-2 py-2 text-white text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
-                          >
-                            <svg
-                              width="18"
-                              height="18"
-                              viewBox="0 0 18 18"
-                              class="text-white"
-                              fill="none"
-                              style="pointer-events: none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M4.37451 9H8.74914M8.74914 9H13.1238M8.74914 9V13.5M8.74914 9V4.5"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
-                          </button>
+                <div class="flex flex-1 gap-3">
+                  <label
+                    class="self-center text-sm text-gray-700 dark:text-white text-[13px]"
+                  >
+                    Stage
+                  </label>
+                  <span class="flex-1">
+                    <input
+                      type="text"
+                      id=""
+                      name=""
+                      placeholder="Enter stage"
+                      class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    />
+                  </span>
+                  <span class="flex gap-2">
+                    <button
+                      class="max-h-[32px] items-center gap-2 px-2 py-2 text-white text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4.37451 9H8.74914M8.74914 9H13.1238M8.74914 9V13.5M8.74914 9V4.5"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
 
-                          <button
-                            type="button"
-                            class="remove-stage remove-btn max-h-[32px] inline-flex items-center gap-2 px-2 py-2 text-sm font-medium text-white transition rounded-lg bg-red-600 shadow-theme-xs hover:bg-red-500"
-                          >
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="none"
-                              style="pointer-events: none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M9.75 6.44444V11.8889M6.25 6.44444V11.8889M2.75 3.33333V12.5111C2.75 13.3823 2.75 13.8176 2.94074 14.1504C3.10852 14.443 3.37604 14.6815 3.70532 14.8306C4.0793 15 4.56912 15 5.5473 15H10.4527C11.4309 15 11.92 15 12.294 14.8306C12.6233 14.6815 12.8917 14.443 13.0594 14.1504C13.25 13.8179 13.25 13.383 13.25 12.5135V3.33333M2.75 3.33333H4.5M2.75 3.33333H1M4.5 3.33333H11.5M4.5 3.33333C4.5 2.60854 4.5 2.24632 4.63321 1.96045C4.81082 1.57929 5.15128 1.27629 5.58008 1.11841C5.90168 1 6.3096 1 7.125 1H8.875C9.6904 1 10.0981 1 10.4197 1.11841C10.8485 1.27629 11.1891 1.57929 11.3667 1.96045C11.4999 2.24631 11.5 2.60854 11.5 3.33333M11.5 3.33333H13.25M13.25 3.33333H15"
-                                stroke="white"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
-                          </button>
-                          <!--Confirmation modal-->
+                    <button
+                      type="button"
+                      class="max-h-[32px] inline-flex items-center gap-2 px-2 py-2 text-sm font-medium text-white transition rounded-lg bg-red-600 shadow-theme-xs hover:bg-red-500"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.75 6.44444V11.8889M6.25 6.44444V11.8889M2.75 3.33333V12.5111C2.75 13.3823 2.75 13.8176 2.94074 14.1504C3.10852 14.443 3.37604 14.6815 3.70532 14.8306C4.0793 15 4.56912 15 5.5473 15H10.4527C11.4309 15 11.92 15 12.294 14.8306C12.6233 14.6815 12.8917 14.443 13.0594 14.1504C13.25 13.8179 13.25 13.383 13.25 12.5135V3.33333M2.75 3.33333H4.5M2.75 3.33333H1M4.5 3.33333H11.5M4.5 3.33333C4.5 2.60854 4.5 2.24632 4.63321 1.96045C4.81082 1.57929 5.15128 1.27629 5.58008 1.11841C5.90168 1 6.3096 1 7.125 1H8.875C9.6904 1 10.0981 1 10.4197 1.11841C10.8485 1.27629 11.1891 1.57929 11.3667 1.96045C11.4999 2.24631 11.5 2.60854 11.5 3.33333M11.5 3.33333H13.25M13.25 3.33333H15"
+                          stroke="white"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    <!--Confirmation modal-->
 
-                          <!--Confirmation modal-->
-                        </span>
-                      </div>
-                    </div>
-
-                    <div
-                      class="categories ml-5 gap-3 flex flex-col flex-1"
-                    ></div>
-                  </div>
+                    <!--Confirmation modal-->
+                  </span>
                 </div>
               </div>
-            </template>
-
-            <!-- Category Template -->
-            <template id="category-template">
+            </div>
+            <div class="child-box ml-5 flex flex-1 relative">
+              <!-- <div
+                class="popupDiv bg-white dark:bg-black flex items-center justify-center mx-auto w-full h-full"
+              >
+                <button
+                  onclick="closePopup()"
+                  class="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                >
+                  Add Category
+                </button>
+              </div> -->
               <div
-                class="category card flex flex-1 flex-col relative before:content-[''] before:absolute before:[left:-19px] before:top-[-11px] before:w-[1px] before:h-[calc(100%+11px)] before:border-l before:border-gray-300 dark:before:border-gray-700 after:content-[''] after:absolute after:left-[-18px] after:top-[50%] after:w-[10px] after:h-[1px] after:border-b after:border-gray-300 dark:after:border-gray-700"
-                data-default="false"
+                class="card flex flex-1 relative before:content-[''] before:absolute before:[left:-19px] before:top-[-11px] before:w-[1px] before:h-[calc(100%+11px)] before:border-l before:border-gray-300 dark:before:border-gray-700 after:content-[''] after:absolute after:left-[-18px] after:top-[50%] after:w-[10px] after:h-[1px] after:border-b after:border-gray-300 dark:after:border-gray-700"
               >
                 <div
-                  class="rounded-lg gap-2 border dark:bg-slate-800 dark:text-white dark:border-gray-700 border-gray-300 p-3 bg-[#F3FFF6] flex-1 flex flex-col"
+                  class="rounded-lg border dark:bg-slate-800 dark:text-white dark:border-gray-700 border-gray-300 p-3 bg-[#F3FFF6] flex-1 flex flex-col"
                 >
                   <div class="flex flex-1 gap-2">
                     <div class="flex flex-col self-center">
@@ -895,7 +879,6 @@
                         </svg>
                       </span>
                     </div>
-
                     <div class="flex gap-3 flex-1">
                       <label
                         class="self-center text-[13px] text-gray-700 dark:text-white"
@@ -913,14 +896,13 @@
                       </span>
                       <span class="flex gap-2">
                         <button
-                          class="add-category add-btn max-h-[32px] inline-flex items-center gap-2 px-2 py-2 text-white text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                          class="max-h-[32px] inline-flex items-center gap-2 px-2 py-2 text-white text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
                         >
                           <svg
                             width="18"
                             height="18"
                             viewBox="0 0 18 18"
                             fill="none"
-                            style="pointer-events: none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -934,7 +916,7 @@
                         </button>
 
                         <button
-                          class="remove-category remove-btn max-h-[32px] inline-flex items-center gap-2 px-2 py-2 text-sm font-medium text-white transition rounded-lg bg-red-600 shadow-theme-xs hover:bg-red-500"
+                          class="max-h-[32px] inline-flex items-center gap-2 px-2 py-2 text-sm font-medium text-white transition rounded-lg bg-red-600 shadow-theme-xs hover:bg-red-500"
                           onclick="toggleCards(this)"
                         >
                           <svg
@@ -942,7 +924,6 @@
                             height="16"
                             viewBox="0 0 16 16"
                             fill="none"
-                            style="pointer-events: none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -957,211 +938,222 @@
                       </span>
                     </div>
                   </div>
-                  <div
-                    class="listings ml-8 flex flex-col overflow-x-auto overflow-y-hidden max-w-[calc(100vw-150px)]"
-                  ></div>
-                </div>
-              </div>
-            </template>
 
-            <!-- Listing Template -->
-            <template id="listing-template">
-              <div class="listing flex flex-col" data-default="false">
-                <div class="">
-                  <div class="pt-0 min-w-full inline-block align-middle">
-                    <div
-                      class="overflow-hidden ml-8 border bg-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 rounded-lg divide-y divide-gray-300 dark:divide-gray-700"
+                  <div class="flex flex-col">
+                    <!-- <div
+                      class="sourceDiv flex justify-center items-center mt-2"
                     >
-                      <div class="">
-                        <table
-                          class="min-w-full divide-y divide-gray-300 dark:divide-gray-700"
-                        >
-                          <tbody
-                            class="divide-y divide-gray-200 dark:divide-neutral-700"
+                      <button
+                        onclick="toggleSection(this)"
+                        class="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                      >
+                        Add Listing
+                      </button>
+                    </div> -->
+
+                    <div class="my-4 targetDiv">
+                      <div class="flex flex-col">
+                        <div class="-m-1.5 overflow-x-auto">
+                          <div
+                            class="p-1.5 pt-0 min-w-full inline-block align-middle"
                           >
-                            <tr>
-                              <td
-                                class="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
+                            <div
+                              class="overflow-hidden ml-8 border bg-white dark:bg-gray-900 dark:border-gray-700 border-gray-300 rounded-lg divide-y divide-gray-300 dark:divide-gray-700"
+                            >
+                              <div
+                                class="overflow-x-auto overflow-y-hidden max-w-[calc(100vw-120px)]"
                               >
-                                <input
-                                  type="text"
-                                  id=""
-                                  name=""
-                                  placeholder="Listing"
-                                  class="w-32 md:w-full px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-                                />
-                              </td>
-                              <td
-                                class="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
-                              >
-                                <textarea
-                                  placeholder="Description"
-                                  type="text"
-                                  rows="2"
-                                  class="lg:min-w-[370px] min-w-full h-8 flex md:w-full px-2 dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:shadow-focus-ring dark:focus:border-brand-800 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 placeholder:text-gray-400 focus:ring-0 focus:outline-hidden disabled:border-gray-100 disabled:bg-gray-50 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:placeholder:text-white/15"
-                                ></textarea>
-                              </td>
-                              <td
-                                class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                              >
-                                <div
-                                  x-data="{ isOptionSelected: false }"
-                                  class="relative z-20 bg-transparent"
+                                <table
+                                  class="min-w-full divide-y divide-gray-300 dark:divide-gray-700"
                                 >
-                                  <select
-                                    class="w-32 max-h-[32px] md:w-full px-2 dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 appearance-none rounded-lg border border-gray-300 bg-transparent bg-none pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                                    :class="isOptionSelected && 'text-gray-800 dark:text-white/50'"
-                                    @change="isOptionSelected = true"
+                                  <tbody
+                                    class="divide-y divide-gray-200 dark:divide-neutral-700"
                                   >
-                                    <option
-                                      value=""
-                                      disabled
-                                      selected
-                                      hidden
-                                      class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
-                                    >
-                                      Unit
-                                    </option>
-                                    <option
-                                      value=""
-                                      class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
-                                    >
-                                      Marketing
-                                    </option>
-                                    <option
-                                      value=""
-                                      class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
-                                    >
-                                      Template
-                                    </option>
-                                    <option
-                                      value=""
-                                      class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
-                                    >
-                                      Development
-                                    </option>
-                                  </select>
-                                  <span
-                                    class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400"
-                                  >
-                                    <svg
-                                      class="stroke-current"
-                                      width="20"
-                                      height="20"
-                                      viewBox="0 0 20 20"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
-                                        stroke=""
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                      />
-                                    </svg>
-                                  </span>
-                                </div>
-                              </td>
-                              <td
-                                class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                              >
-                                <input
-                                  type="text"
-                                  id=""
-                                  name=""
-                                  placeholder="Quantity"
-                                  class="w-[90px] px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-                                />
-                              </td>
+                                    <tr>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <input
+                                          type="text"
+                                          id=""
+                                          name=""
+                                          placeholder="Listing"
+                                          class="w-32 md:w-full px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                        />
+                                      </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <textarea
+                                          placeholder="Description"
+                                          type="text"
+                                          rows="2"
+                                          class="lg:min-w-[370px] min-w-full h-7 md:w-full px-2 dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:shadow-focus-ring dark:focus:border-brand-800 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 placeholder:text-gray-400 focus:ring-0 focus:outline-hidden disabled:border-gray-100 disabled:bg-gray-50 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:placeholder:text-white/15"
+                                        ></textarea>
+                                      </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <div
+                                          x-data="{ isOptionSelected: false }"
+                                          class="relative z-20 bg-transparent"
+                                        >
+                                          <select
+                                            class="w-32 max-h-[32px] md:w-full px-2 dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 appearance-none rounded-lg border border-gray-300 bg-transparent bg-none pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                                            :class="isOptionSelected && 'text-gray-800 dark:text-white/50'"
+                                            @change="isOptionSelected = true"
+                                          >
+                                            <option
+                                              value=""
+                                              disabled
+                                              selected
+                                              hidden
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Unit
+                                            </option>
+                                            <option
+                                              value=""
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Marketing
+                                            </option>
+                                            <option
+                                              value=""
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Template
+                                            </option>
+                                            <option
+                                              value=""
+                                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                            >
+                                              Development
+                                            </option>
+                                          </select>
+                                          <span
+                                            class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                                          >
+                                            <svg
+                                              class="stroke-current"
+                                              width="20"
+                                              height="20"
+                                              viewBox="0 0 20 20"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
+                                                stroke=""
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </div>
+                                      </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <input
+                                          type="text"
+                                          id=""
+                                          name=""
+                                          placeholder="Quantity"
+                                          class="w-[90px] px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                        />
+                                      </td>
 
-                              <td
-                                class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                              >
-                                <input
-                                  type="text"
-                                  id=""
-                                  name=""
-                                  placeholder="Amount"
-                                  class="w-[90px] px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-                                />
-                              </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                                      >
+                                        <input
+                                          type="text"
+                                          id=""
+                                          name=""
+                                          placeholder="Amount"
+                                          class="w-[90px] px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                        />
+                                      </td>
 
-                              <td
-                                class="p-2 whitespace-nowrap text-start text-sm font-medium"
-                              >
-                                <input
-                                  type="text"
-                                  id=""
-                                  name=""
-                                  placeholder="Rate"
-                                  class="w-[90px] px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-                                />
-                              </td>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-start text-sm font-medium"
+                                      >
+                                        <input
+                                          type="text"
+                                          id=""
+                                          name=""
+                                          placeholder="Rate"
+                                          class="w-[90px] px-2 dark:bg-dark-900 h-8 rounded-lg border border-gray-300 bg-transparent text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                                        />
+                                      </td>
 
-                              <td
-                                class="p-2 whitespace-nowrap text-center text-sm font-medium"
-                              >
-                                <div class="flex gap-3">
-                                  <button
-                                    type="button"
-                                    class="add-listing add-btn inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
-                                  >
-                                    <svg
-                                      width="12"
-                                      height="12"
-                                      viewBox="0 0 16 16"
-                                      fill="none"
-                                      style="pointer-events: none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        d="M1 8H8M8 8H15M8 8V15M8 8V1"
-                                        stroke="currentColor"
-                                        class="text-brand-500"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                      />
-                                    </svg>
-                                  </button>
-                                  <button
-                                    type="button"
-                                    class="remove-listing remove-btn inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
-                                  >
-                                    <svg
-                                      width="16"
-                                      height="16"
-                                      viewBox="0 0 16 16"
-                                      style="pointer-events: none"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        d="M9.75 6.44444V11.8889M6.25 6.44444V11.8889M2.75 3.33333V12.5111C2.75 13.3823 2.75 13.8176 2.94074 14.1504C3.10852 14.443 3.37604 14.6815 3.70532 14.8306C4.0793 15 4.56912 15 5.5473 15H10.4527C11.4309 15 11.92 15 12.294 14.8306C12.6233 14.6815 12.8917 14.443 13.0594 14.1504C13.25 13.8179 13.25 13.383 13.25 12.5135V3.33333M2.75 3.33333H4.5M2.75 3.33333H1M4.5 3.33333H11.5M4.5 3.33333C4.5 2.60854 4.5 2.24632 4.63321 1.96045C4.81082 1.57929 5.15128 1.27629 5.58008 1.11841C5.90168 1 6.3096 1 7.125 1H8.875C9.6904 1 10.0981 1 10.4197 1.11841C10.8485 1.27629 11.1891 1.57929 11.3667 1.96045C11.4999 2.24631 11.5 2.60854 11.5 3.33333M11.5 3.33333H13.25M13.25 3.33333H15"
-                                        stroke="currentColor"
-                                        class="text-red-400 dark:text-red-400"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                      />
-                                    </svg>
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                      <td
+                                        class="p-2 whitespace-nowrap text-center text-sm font-medium"
+                                      >
+                                        <div class="flex gap-3">
+                                          <button
+                                            type="button"
+                                            class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                                          >
+                                            <svg
+                                              width="12"
+                                              height="12"
+                                              viewBox="0 0 16 16"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="M1 8H8M8 8H15M8 8V15M8 8V1"
+                                                stroke="currentColor"
+                                                class="text-brand-500"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                              />
+                                            </svg>
+                                          </button>
+                                          <button
+                                            type="button"
+                                            class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                                          >
+                                            <svg
+                                              width="16"
+                                              height="16"
+                                              viewBox="0 0 16 16"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <path
+                                                d="M9.75 6.44444V11.8889M6.25 6.44444V11.8889M2.75 3.33333V12.5111C2.75 13.3823 2.75 13.8176 2.94074 14.1504C3.10852 14.443 3.37604 14.6815 3.70532 14.8306C4.0793 15 4.56912 15 5.5473 15H10.4527C11.4309 15 11.92 15 12.294 14.8306C12.6233 14.6815 12.8917 14.443 13.0594 14.1504C13.25 13.8179 13.25 13.383 13.25 12.5135V3.33333M2.75 3.33333H4.5M2.75 3.33333H1M4.5 3.33333H11.5M4.5 3.33333C4.5 2.60854 4.5 2.24632 4.63321 1.96045C4.81082 1.57929 5.15128 1.27629 5.58008 1.11841C5.90168 1 6.3096 1 7.125 1H8.875C9.6904 1 10.0981 1 10.4197 1.11841C10.8485 1.27629 11.1891 1.57929 11.3667 1.96045C11.4999 2.24631 11.5 2.60854 11.5 3.33333M11.5 3.33333H13.25M13.25 3.33333H15"
+                                                stroke="currentColor"
+                                                class="text-red-400 dark:text-red-400"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                              />
+                                            </svg>
+                                          </button>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="py-1 px-4 text-end">
+                                <h4 class="font-medium text-sm">
+                                  List Total: <span>122,22.00</span>
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </template>
-            <div class="py-1 px-4 text-end">
-              <h4 class="font-medium text-sm dark:text-white">
-                List Total: <span>122,22.00</span>
-              </h4>
             </div>
           </div>
         </div>
@@ -1256,132 +1248,29 @@
 </script>
 
 <script>
-  let stageIndex = 1;
+  function toggleCards(btn) {
+    const currentCard = btn.closest(".card");
 
-  // ==================
-  //  Mark default Stage/Category/Listing
-  // ==================
-  function markDefaults(stage) {
-    // Mark Stage
-    stage.dataset.default = "true";
-    const removeStageBtn = stage.querySelector(".remove-stage");
-    removeStageBtn.disabled = true;
-    removeStageBtn.style.opacity = "0.3";
-    removeStageBtn.style.cursor = "not-allowed";
+    currentCard.classList.add("hidden");
 
-    // Mark first Category
-    const category = stage.querySelector(".category");
-    if (category) {
-      category.dataset.default = "true";
-      const removeCatBtn = category.querySelector(".remove-category");
-      if (removeCatBtn) {
-        removeCatBtn.disabled = true;
-        removeCatBtn.style.opacity = "0.3";
-        removeCatBtn.style.cursor = "not-allowed";
-      }
-
-      // Mark first Listing
-      const listing = category.querySelector(".listing");
-      if (listing) {
-        listing.dataset.default = "true";
-        const removeListingBtn = listing.querySelector(".remove-listing");
-        if (removeListingBtn) {
-          removeListingBtn.disabled = true;
-          removeListingBtn.style.opacity = "0.3";
-          removeListingBtn.style.cursor = "not-allowed";
-        }
-      }
-    }
+    document.querySelector(".popupDiv").classList.remove("hidden");
   }
 
-  // ==================
-  //  Functions to add Stage/Category/Listing
-  // ==================
-  function addStage(isDefault = false) {
-    let tpl = document.getElementById("stage-template").innerHTML;
-    tpl = tpl.replace(/__i__/g, stageIndex);
-    document
-      .getElementById("stages-wrapper")
-      .insertAdjacentHTML("beforeend", tpl);
+  function closePopup() {
+    const popup = document.querySelector(".popupDiv");
+    popup.classList.add("hidden");
 
-    const stage = document.querySelector(`#stages-wrapper .stage:last-child`);
+    const hiddenCards = document.querySelectorAll(".card.hidden");
 
-    // Automatically add 1 Category + 1 Listing for this Stage
-    const category = addCategory(stage, isDefault); // pass isDefault only for first stage
-    addListing(category, isDefault);
-
-    if (isDefault) markDefaults(stage); // mark the default stage/category/listing
-
-    stageIndex++;
-    return stage;
-  }
-
-  function addCategory(stage, isDefault = false) {
-    let tpl = document.getElementById("category-template").innerHTML;
-    stage.querySelector(".categories").insertAdjacentHTML("beforeend", tpl);
-    const category = stage.querySelector(".categories .category:last-child");
-
-    if (isDefault) markDefaults(stage); // mark default category/listing
-    return category;
-  }
-
-  function addListing(category, isDefault = false) {
-    let tpl = document.getElementById("listing-template").innerHTML;
-    category.querySelector(".listings").insertAdjacentHTML("beforeend", tpl);
-    const listing = category.querySelector(".listings .listing:last-child");
-
-    if (isDefault) markDefaults(category); // mark default listing
-    return listing;
-  }
-
-  // ==================
-  //  Initial Load
-  // ==================
-  document.addEventListener("DOMContentLoaded", () => {
-    //  Add the default stage
-    const defaultStage = addStage(true); // creates stage
-    const defaultCategory = addCategory(defaultStage, true);
-    const defaultListing = addListing(defaultCategory, true);
-    markDefaults(defaultStage);
-  });
-
-  // ==================
-  //  Event delegation
-  // ==================
-  document.addEventListener("click", function (e) {
-    const target = e.target;
-
-    // Add Stage
-    if (target.classList.contains("add-stage")) addStage();
-    if (target.id === "add-stage-btn") addStage();
-
-    // Remove Stage
-    if (target.classList.contains("remove-stage")) {
-      const stage = target.closest(".stage");
-      if (stage.dataset.default === "true") return;
-      stage.remove();
+    if (hiddenCards.length > 0) {
+      hiddenCards[0].classList.remove("hidden"); // Show first hidden card
     }
+  }
+</script>
 
-    // Add Category
-    if (target.classList.contains("add-category"))
-      addCategory(target.closest(".stage"));
-
-    // Remove Category
-    if (target.classList.contains("remove-category")) {
-      const cat = target.closest(".category");
-      if (cat.dataset.default === "true") return;
-      cat.remove();
-    }
-
-    // Add Listing
-    if (target.classList.contains("add-listing"))
-      addListing(target.closest(".category"));
-
-    // Remove Listing
-    if (target.classList.contains("remove-listing")) {
-      const listing = target.closest(".listing");
-      if (listing.dataset.default === "true") return;
-      listing.remove();
-    }
-  });
+<script>
+  function toggleSection(btn) {
+    btn.closest(".sourceDiv").classList.add("hidden"); // hide current section
+    document.querySelector(".targetDiv").classList.remove("hidden"); // show next
+  }
 </script>

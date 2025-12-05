@@ -2905,6 +2905,16 @@
       width: calc(2/3 * 100%);
     }
   }
+  .xl\:w-\[180px\] {
+    @media (width >= 1280px) {
+      width: 180px;
+    }
+  }
+  .xl\:w-\[220px\] {
+    @media (width >= 1280px) {
+      width: 220px;
+    }
+  }
   .xl\:w-\[300px\] {
     @media (width >= 1280px) {
       width: 300px;

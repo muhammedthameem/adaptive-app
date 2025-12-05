@@ -980,6 +980,45 @@
                             class="divide-y divide-gray-200 dark:divide-neutral-700"
                           >
                             <tr>
+                                <td>
+                                        <div class="flex flex-col self-center">
+                      <span class="cursor-pointer" title="Up">
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 27 25"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M13.5 17.7084V7.29169M13.5 7.29169L9 11.4584M13.5 7.29169L18 11.4584"
+                            stroke="#465FFF"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      <span class="cursor-pointer" title="Down">
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 27 26"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M13.5 7.58331V18.4166M13.5 18.4166L18 14.0833M13.5 18.4166L9 14.0833"
+                            stroke="#AEAEB2"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                            </td>
+                                
                               <td
                                 class="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
                               >
@@ -1254,134 +1293,356 @@
     });
   })();
 </script>
+<script>
+/*
+  Optimized + Shortened dynamic Stage→Category→Listing script
+  Requirements preserved:
+  - Default 1 Stage → 1 Category → 1 Listing on load
+  - add/remove stage/category/listing
+  - auto-add 1 listing for new category; new stage adds 1 category+1 listing
+  - auto-remove empty category/stage (except defaults)
+  - Laravel-friendly names: stages[i][name], stages[i][categories][j][name], stages[i][categories][j][listings][k][field]
+  - Detects inputs by placeholder/tag; SELECT is treated as unit
+*/
+
+(() => {
+  let tplIdCounter = 0;
+  const wrapperSel = "#stages-wrapper";
+
+  const fldOrder = ["name","description","unit","quantity","rate","amount"];
+  const queryAll = el => Array.from(el.querySelectorAll("input,textarea,select"));
+
+  const detectField = el => {
+    const tag = el.tagName.toLowerCase();
+    if (tag === "select") return "unit";
+    const ph = (el.placeholder||"").toLowerCase();
+    if (ph.includes("name")||ph.includes("listing")) return "name";
+    if (ph.includes("description")||ph.includes("desc")) return "description";
+    if (ph.includes("unit")) return "unit";
+    if (ph.includes("qty")||ph.includes("quantity")) return "quantity";
+    if (ph.includes("rate")) return "rate";
+    if (ph.includes("amount")||ph.includes("amt")) return "amount";
+    return "value";
+  };
+
+  const findStageInput = s => {
+    const cands = queryAll(s);
+    return cands.find(i => (i.placeholder||"").toLowerCase().includes("enter stage") || (i.placeholder||"").toLowerCase().includes("stage")) || cands[0] || null;
+  };
+  const findCategoryInput = c => {
+    const cands = queryAll(c);
+    return cands.find(i => (i.placeholder||"").toLowerCase().includes("enter category") || (i.placeholder||"").toLowerCase().includes("category")) || cands[0] || null;
+  };
+
+  function reindexAll(){
+    const stages = document.querySelectorAll(`${wrapperSel} .stage`);
+    stages.forEach((stage, si) => {
+      stage.dataset.index = si;
+      const sInp = findStageInput(stage);
+      if (sInp) sInp.name = `stages[${si}][name]`;
+
+      const categories = stage.querySelectorAll(".category");
+      categories.forEach((cat, cj) => {
+        cat.dataset.index = cj;
+        const cInp = findCategoryInput(cat);
+        if (cInp) cInp.name = `stages[${si}][categories][${cj}][name]`;
+
+        const listings = cat.querySelectorAll(".listing");
+        listings.forEach((list, lk) => {
+          list.dataset.index = lk;
+          // collect and map listing inputs
+          const cand = queryAll(list);
+          const map = {};
+          cand.forEach(el => {
+            const key = detectField(el);
+            if (!map[key]) map[key] = el;
+          });
+          // assign ordered fields
+          fldOrder.forEach((key, idx) => {
+            if (map[key]) map[key].name = `stages[${si}][categories][${cj}][listings][${lk}][${key}]`;
+          });
+          // leftovers
+          cand.filter(e=>!Object.values(map).includes(e)).forEach((el, r)=> el.name = `stages[${si}][categories][${cj}][listings][${lk}][extra_${r}]`);
+        });
+      });
+    });
+  }
+
+  function protectDefaults(stage){
+    stage.dataset.default = "true";
+    const setDisabled = (elSel) => {
+      const btn = stage.querySelector(elSel);
+      if (btn) { btn.disabled = true; btn.style.opacity = "0.35"; btn.style.cursor = "not-allowed"; }
+    };
+    setDisabled(".remove-stage");
+    const firstCat = stage.querySelector(".category");
+    if (firstCat){
+      firstCat.dataset.default = "true";
+      const rmCat = firstCat.querySelector(".remove-category"); if (rmCat) { rmCat.disabled = true; rmCat.style.opacity="0.35"; rmCat.style.cursor="not-allowed"; }
+      const firstList = firstCat.querySelector(".listing");
+      if (firstList){ const rmList = firstList.querySelector(".remove-listing"); if (rmList){ rmList.disabled=true; rmList.style.opacity="0.35"; rmList.style.cursor="not-allowed"; } }
+    }
+  }
+
+  function tplHTML(id){
+    const t = document.getElementById(id);
+    return t ? t.innerHTML.replace(/__i__/g, tplIdCounter++) : "";
+  }
+
+  function addStage(isDefault=false){
+    const html = tplHTML("stage-template");
+    if(!html) { console.error("stage-template missing"); return null; }
+    document.querySelector(wrapperSel).insertAdjacentHTML("beforeend", html);
+    const st = document.querySelector(`${wrapperSel} .stage:last-child`);
+    addCategory(st, isDefault); // adds one category + one listing
+    if (isDefault) protectDefaults(st);
+    reindexAll();
+    return st;
+  }
+
+  function addCategory(stageOrBtn, isDefault=false){
+    const stage = stageOrBtn.classList && stageOrBtn.classList.contains("stage") ? stageOrBtn : stageOrBtn.closest(".stage");
+    if(!stage){ console.error("parent stage not found"); return null; }
+    const html = tplHTML("category-template");
+    if(!html){ console.error("category-template missing"); return null; }
+    stage.querySelector(".categories").insertAdjacentHTML("beforeend", html);
+    const cat = stage.querySelector(".categories .category:last-child");
+    addListing(cat, isDefault);
+    if (isDefault) protectDefaults(stage);
+    reindexAll();
+    return cat;
+  }
+
+  function addListing(categoryOrBtn, isDefault=false){
+    const cat = categoryOrBtn.classList && categoryOrBtn.classList.contains("category") ? categoryOrBtn : categoryOrBtn.closest(".category");
+    if(!cat){ console.error("category not found"); return null; }
+    const html = tplHTML("listing-template");
+    if(!html){ console.error("listing-template missing"); return null; }
+    cat.querySelector(".listings").insertAdjacentHTML("beforeend", html);
+    const list = cat.querySelector(".listings .listing:last-child");
+    if (isDefault){ const st = cat.closest(".stage"); if (st) protectDefaults(st); }
+    reindexAll();
+    return list;
+  }
+
+  function cleanupAfterListingRemoval(cat){
+    if(!cat) return reindexAll();
+    const lists = cat.querySelectorAll(".listing");
+    if (lists.length === 0 && cat.dataset.default !== "true"){
+      const parentStage = cat.closest(".stage");
+      cat.remove();
+      if (parentStage && parentStage.querySelectorAll(".category").length === 0 && parentStage.dataset.default !== "true") parentStage.remove();
+    }
+    reindexAll();
+  }
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    const wrap = document.getElementById(wrapperSel.replace("#",""));
+    if(!wrap){ console.error("stages-wrapper missing"); return; }
+    if(wrap.querySelectorAll(".stage").length === 0){
+      const s = addStage(true);
+      if(s) protectDefaults(s);
+    } else {
+      const first = wrap.querySelector(".stage");
+      if(first) protectDefaults(first);
+      reindexAll();
+    }
+  });
+
+  document.addEventListener("click", e=>{
+    const t = e.target;
+    if (t.closest(".add-stage") || t.id==="add-stage-btn"){ addStage(false); return; }
+    if (t.closest(".remove-stage")){ const st = t.closest(".stage"); if (st && st.dataset.default!=="true"){ st.remove(); reindexAll(); } return; }
+    if (t.closest(".add-category")){ addCategory(t, false); return; }
+    if (t.closest(".remove-category")){ const cat=t.closest(".category"); if(cat && cat.dataset.default!=="true"){ const ps=cat.closest(".stage"); cat.remove(); if(ps && ps.querySelectorAll(".category").length===0 && ps.dataset.default!=="true") ps.remove(); else reindexAll(); } return; }
+    if (t.closest(".add-listing")){ addListing(t,false); return; }
+    if (t.closest(".remove-listing")){ const li=t.closest(".listing"); if(li && li.dataset.default!=="true"){ const c=li.closest(".category"); li.remove(); cleanupAfterListingRemoval(c); } return; }
+  });
+
+  window.__stages_dynamic = { reindexAll, addStage, addCategory, addListing };
+})();
+</script>
 
 <script>
-  let stageIndex = 1;
+// =============================
+//   UP & DOWN Movement Script
+//   (with fixed arrow-color logic)
+// =============================
 
-  // ==================
-  //  Mark default Stage/Category/Listing
-  // ==================
-  function markDefaults(stage) {
-    // Mark Stage
-    stage.dataset.default = "true";
-    const removeStageBtn = stage.querySelector(".remove-stage");
-    removeStageBtn.disabled = true;
-    removeStageBtn.style.opacity = "0.3";
-    removeStageBtn.style.cursor = "not-allowed";
+document.addEventListener("click", function (e) {
 
-    // Mark first Category
-    const category = stage.querySelector(".category");
-    if (category) {
-      category.dataset.default = "true";
-      const removeCatBtn = category.querySelector(".remove-category");
-      if (removeCatBtn) {
-        removeCatBtn.disabled = true;
-        removeCatBtn.style.opacity = "0.3";
-        removeCatBtn.style.cursor = "not-allowed";
+  const btn = e.target.closest("span[title='Up'], span[title='Down']");
+  if (!btn) return;
+
+  const isUp = btn.getAttribute("title") === "Up";
+  const isDown = !isUp;
+
+  const wrapper = document.querySelector("#stages-wrapper");
+
+  // Helper: find nearest wrapper by class name
+  function findParent(el, cls) {
+    return el.closest("." + cls);
+  }
+
+  // 1) LISTING movement
+  const listing = findParent(btn, "listing");
+  if (listing) {
+    const parent = listing.closest(".listings");
+    if (!parent) return;
+    const items = Array.from(parent.children);
+    const index = items.indexOf(listing);
+
+    if (isUp && index > 0) parent.insertBefore(listing, items[index - 1]);
+    if (isDown && index < items.length - 1) parent.insertBefore(items[index + 1], listing);
+
+    if (window.__stages_dynamic) window.__stages_dynamic.reindexAll();
+    updateArrowColors();
+    return;
+  }
+
+  // 2) CATEGORY movement
+  const category = findParent(btn, "category");
+  if (category) {
+    const parent = category.closest(".categories");
+    if (!parent) return;
+    const items = Array.from(parent.children);
+    const index = items.indexOf(category);
+
+    if (isUp && index > 0) parent.insertBefore(category, items[index - 1]);
+    if (isDown && index < items.length - 1) parent.insertBefore(items[index + 1], category);
+
+    if (window.__stages_dynamic) window.__stages_dynamic.reindexAll();
+    updateArrowColors();
+    return;
+  }
+
+  // 3) STAGE movement
+  const stage = findParent(btn, "stage");
+  if (stage) {
+    const parent = wrapper;
+    if (!parent) return;
+    const items = Array.from(parent.children);
+    const index = items.indexOf(stage);
+
+    if (isUp && index > 0) parent.insertBefore(stage, items[index - 1]);
+    if (isDown && index < items.length - 1) parent.insertBefore(items[index + 1], stage);
+
+    if (window.__stages_dynamic) window.__stages_dynamic.reindexAll();
+    updateArrowColors();
+    return;
+  }
+
+});
+
+// ==============================
+// Improved ARROW COLOR UPDATE
+// ==============================
+
+function updateArrowColors() {
+  const BLUE = "#465FFF";
+  const GREY = "#AEAEB2";
+
+  // helper to set stroke color on svg/paths inside a span
+  function setSpanColor(span, color) {
+    if (!span) return;
+    // set for <svg> stroke attribute if present
+    const svgs = span.querySelectorAll("svg");
+    svgs.forEach(svg => {
+      // set stroke attr on svg (affects children if not overridden)
+      svg.setAttribute("stroke", color);
+      // also set stroke on all path elements (explicit)
+      svg.querySelectorAll("path, circle, line, polyline, polygon").forEach(p => {
+        p.setAttribute("stroke", color);
+      });
+    });
+    // if the span directly contains an svg without deeper selectors, above covers it
+    // fallback: set color style (in case svg uses currentColor)
+    span.style.color = color;
+  }
+
+  // STAGES: top-level children of #stages-wrapper
+  const stageWrapper = document.querySelector("#stages-wrapper");
+  if (stageWrapper) {
+    const stages = Array.from(stageWrapper.querySelectorAll(":scope > .stage"));
+    stages.forEach((st, idx) => {
+      const upSpan = st.querySelector("span[title='Up']");
+      const downSpan = st.querySelector("span[title='Down']");
+      if (stages.length === 1) {
+        setSpanColor(upSpan, GREY);
+        setSpanColor(downSpan, GREY);
+      } else if (idx === 0) {
+        setSpanColor(upSpan, GREY);
+        setSpanColor(downSpan, BLUE);
+      } else if (idx === stages.length - 1) {
+        setSpanColor(upSpan, BLUE);
+        setSpanColor(downSpan, GREY);
+      } else {
+        setSpanColor(upSpan, BLUE);
+        setSpanColor(downSpan, BLUE);
       }
+    });
+  }
 
-      // Mark first Listing
-      const listing = category.querySelector(".listing");
-      if (listing) {
-        listing.dataset.default = "true";
-        const removeListingBtn = listing.querySelector(".remove-listing");
-        if (removeListingBtn) {
-          removeListingBtn.disabled = true;
-          removeListingBtn.style.opacity = "0.3";
-          removeListingBtn.style.cursor = "not-allowed";
-        }
+  // CATEGORIES: per each stage, inspect direct children of .categories
+  const allStages = document.querySelectorAll(".stage");
+  allStages.forEach(st => {
+    const catsContainer = st.querySelector(".categories");
+    if (!catsContainer) return;
+    const cats = Array.from(catsContainer.querySelectorAll(":scope > .category"));
+    cats.forEach((cat, idx) => {
+      const upSpan = cat.querySelector("span[title='Up']");
+      const downSpan = cat.querySelector("span[title='Down']");
+      if (cats.length === 1) {
+        setSpanColor(upSpan, GREY);
+        setSpanColor(downSpan, GREY);
+      } else if (idx === 0) {
+        setSpanColor(upSpan, GREY);
+        setSpanColor(downSpan, BLUE);
+      } else if (idx === cats.length - 1) {
+        setSpanColor(upSpan, BLUE);
+        setSpanColor(downSpan, GREY);
+      } else {
+        setSpanColor(upSpan, BLUE);
+        setSpanColor(downSpan, BLUE);
       }
-    }
-  }
-
-  // ==================
-  //  Functions to add Stage/Category/Listing
-  // ==================
-  function addStage(isDefault = false) {
-    let tpl = document.getElementById("stage-template").innerHTML;
-    tpl = tpl.replace(/__i__/g, stageIndex);
-    document
-      .getElementById("stages-wrapper")
-      .insertAdjacentHTML("beforeend", tpl);
-
-    const stage = document.querySelector(`#stages-wrapper .stage:last-child`);
-
-    // Automatically add 1 Category + 1 Listing for this Stage
-    const category = addCategory(stage, isDefault); // pass isDefault only for first stage
-    addListing(category, isDefault);
-
-    if (isDefault) markDefaults(stage); // mark the default stage/category/listing
-
-    stageIndex++;
-    return stage;
-  }
-
-  function addCategory(stage, isDefault = false) {
-    let tpl = document.getElementById("category-template").innerHTML;
-    stage.querySelector(".categories").insertAdjacentHTML("beforeend", tpl);
-    const category = stage.querySelector(".categories .category:last-child");
-
-    if (isDefault) markDefaults(stage); // mark default category/listing
-    return category;
-  }
-
-  function addListing(category, isDefault = false) {
-    let tpl = document.getElementById("listing-template").innerHTML;
-    category.querySelector(".listings").insertAdjacentHTML("beforeend", tpl);
-    const listing = category.querySelector(".listings .listing:last-child");
-
-    if (isDefault) markDefaults(category); // mark default listing
-    return listing;
-  }
-
-  // ==================
-  //  Initial Load
-  // ==================
-  document.addEventListener("DOMContentLoaded", () => {
-    //  Add the default stage
-    const defaultStage = addStage(true); // creates stage
-    const defaultCategory = addCategory(defaultStage, true);
-    const defaultListing = addListing(defaultCategory, true);
-    markDefaults(defaultStage);
+    });
   });
 
-  // ==================
-  //  Event delegation
-  // ==================
-  document.addEventListener("click", function (e) {
-    const target = e.target;
-
-    // Add Stage
-    if (target.classList.contains("add-stage")) addStage();
-    if (target.id === "add-stage-btn") addStage();
-
-    // Remove Stage
-    if (target.classList.contains("remove-stage")) {
-      const stage = target.closest(".stage");
-      if (stage.dataset.default === "true") return;
-      stage.remove();
-    }
-
-    // Add Category
-    if (target.classList.contains("add-category"))
-      addCategory(target.closest(".stage"));
-
-    // Remove Category
-    if (target.classList.contains("remove-category")) {
-      const cat = target.closest(".category");
-      if (cat.dataset.default === "true") return;
-      cat.remove();
-    }
-
-    // Add Listing
-    if (target.classList.contains("add-listing"))
-      addListing(target.closest(".category"));
-
-    // Remove Listing
-    if (target.classList.contains("remove-listing")) {
-      const listing = target.closest(".listing");
-      if (listing.dataset.default === "true") return;
-      listing.remove();
-    }
+  // LISTINGS: per each category, inspect direct children of .listings
+  const allCats = document.querySelectorAll(".category");
+  allCats.forEach(cat => {
+    const listsContainer = cat.querySelector(".listings");
+    if (!listsContainer) return;
+    const lists = Array.from(listsContainer.querySelectorAll(":scope > .listing"));
+    lists.forEach((li, idx) => {
+      const upSpan = li.querySelector("span[title='Up']");
+      const downSpan = li.querySelector("span[title='Down']");
+      if (lists.length === 1) {
+        setSpanColor(upSpan, GREY);
+        setSpanColor(downSpan, GREY);
+      } else if (idx === 0) {
+        setSpanColor(upSpan, GREY);
+        setSpanColor(downSpan, BLUE);
+      } else if (idx === lists.length - 1) {
+        setSpanColor(upSpan, BLUE);
+        setSpanColor(downSpan, GREY);
+      } else {
+        setSpanColor(upSpan, BLUE);
+        setSpanColor(downSpan, BLUE);
+      }
+    });
   });
+
+}
+
+// run once on load
+document.addEventListener("DOMContentLoaded", updateArrowColors);
+
+// also expose for manual calls
+window.__stages_movement = { updateArrowColors };
 </script>
+
+
+
+
+ 

@@ -972,6 +972,127 @@
           </div>
         </div>
       </div>
+
+      <div
+        class="rounded-lg border dark:border-gray-700 border-gray-300 mt-3 p-3"
+      >
+        <table
+          class="w-full border-collapse dark:border-gray-700 border-gray-300 rounded-lg overflow-hidden"
+        >
+          <thead>
+            <tr class="bg-gray-100 dark:bg-slate-800 text-left">
+              <th
+                class="p-3 border dark:border-gray-700 border-gray-300 font-medium text-sm dark:text-white"
+              >
+                Stage
+              </th>
+              <th
+                class="p-3 border dark:border-gray-700 border-gray-300 font-medium text-sm dark:text-white"
+              >
+                Description
+              </th>
+              <th
+                class="p-3 border dark:border-gray-700 border-gray-300 font-medium text-sm dark:text-white"
+              >
+                %
+              </th>
+              <th
+                class="p-3 border dark:border-gray-700 border-gray-300 font-medium text-sm dark:text-white"
+              >
+                Amount (₹)
+              </th>
+            </tr>
+          </thead>
+
+          <tbody id="paymentStages">
+            <!-- Default row (cannot be removed) -->
+            <tr class="payment-row">
+              <td class="p-2 border dark:border-gray-700 border-gray-300">
+                <input
+                  class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                  value="Advance"
+                />
+              </td>
+              <td class="p-2 border dark:border-gray-700 border-gray-300">
+                <input
+                  class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                  value="On work confirmation"
+                />
+              </td>
+              <td
+                class="p-2 border border dark:border-gray-700 border-gray-300"
+              >
+                <input
+                  class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                  value="30"
+                />
+              </td>
+              <td class="p-2 border dark:border-gray-700 border-gray-300">
+                <input
+                  class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                  value="45,000"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Buttons -->
+        <div class="flex gap-3 mt-6">
+          <button
+            onclick="addPaymentStage()"
+            class="inline-flex items-center gap-2 px-3 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+          >
+            + Add Payment Stage
+          </button>
+
+          <button
+            onclick="removePaymentStage()"
+            class="inline-flex items-center gap-2 px-3 py-3 text-sm font-medium text-white transition rounded-lg bg-red-500 shadow-theme-xs hover:bg-red-600"
+          >
+            − Remove Payment Stage
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="rounded-lg border dark:border-gray-700 border-gray-300 mt-3 p-3"
+      >
+        <label
+          class="text-sm font-medium text-gray-700 dark:text-gray-400"
+          for=""
+          >Terms & Conditions</label
+        >
+
+        <textarea
+          class="dark:bg-dark-900 mt-3 shadow-theme-xs focus:border-brand-300 focus:shadow-focus-ring dark:focus:border-brand-800 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-0 focus:outline-hidden disabled:border-gray-100 disabled:bg-gray-50 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:placeholder:text-white/15"
+          rows="12"
+        >
+1. The estimate is valid for a period of 30 days from the date of issue.
+2. Work completion period is approximately 45 working days from the date of advance payment.
+3. Materials and brands will be as specified and approved before execution.
+4. Any additional or modified work not included in this estimate will be charged separately.
+5. Payments shall be made strictly as per the agreed payment schedule.
+6. Delays in payment may result in temporary suspension of work.
+7. This estimate does not include statutory approvals unless mentioned explicitly.
+        </textarea>
+      </div>
+
+      <div
+        class="bg-gray-50 px-0 py-3 sm:flex sm:flex-row-reverse sm:px-0 gap-3 dark:bg-slate-800"
+      >
+        <button
+          class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-inset ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
+          type="button"
+        >
+          Draft Estimate
+        </button>
+        <button
+          class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+        >
+          Create Estimate
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -1534,4 +1655,40 @@
 
   // also expose for manual calls
   window.__stages_movement = { updateArrowColors };
+</script>
+
+<script>
+  function addPaymentStage() {
+    const tbody = document.getElementById("paymentStages");
+
+    const row = document.createElement("tr");
+    row.className = "payment-row";
+
+    row.innerHTML = `
+        <td class="p-2 border">
+          <input class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" placeholder="Stage" />
+        </td>
+        <td class="p-2 border">
+          <input class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" placeholder="Description" />
+        </td>
+        <td class="p-2 border">
+          <input class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" placeholder="%" />
+        </td>
+        <td class="p-2 border">
+          <input class="dark:bg-dark-900 h-8 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" placeholder="Amount (₹)" />
+        </td>
+      `;
+
+    tbody.appendChild(row);
+  }
+
+  function removePaymentStage() {
+    const tbody = document.getElementById("paymentStages");
+    const rows = tbody.querySelectorAll(".payment-row");
+
+    // Keep at least one row (default row)
+    if (rows.length > 1) {
+      rows[rows.length - 1].remove();
+    }
+  }
 </script>
